@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcc88b0321d09c44999af703bf5e094, type: 3}
+  m_Name: TileData_NonWalkable
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: f2166cfffeeec69429fa7bc6c4788724, type: 2}
+  - {fileID: 11400000, guid: 97d0826aacd10d04b8f3deb7a301cd84, type: 2}
+  Walkable: 0
+  Occupied: 0
