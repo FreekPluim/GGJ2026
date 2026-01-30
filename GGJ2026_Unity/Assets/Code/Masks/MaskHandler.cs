@@ -24,9 +24,18 @@ public class MaskHandler : MonoBehaviour
 
     private void Start()
     {
-        activeMask = startMask.GenerateMask();
-        inventoryMask = startInventoryMask.GenerateMask();
+        if (startMask == null)
+        {
+            Debug.Log("CATASTROPHIC FAILURE LMAO\nI DIE NOW GOODBYE THANK");
+            return;
+        }
 
+        if (startInventoryMask != null)
+        {
+            inventoryMask = startInventoryMask.GenerateMask();
+        }
+
+        activeMask = startMask.GenerateMask();
         activeMask.StartUse();
     }
 
@@ -40,6 +49,12 @@ public class MaskHandler : MonoBehaviour
 
     private void SwapMask()
     {
+        if (inventoryMask == null)
+        {
+            // Inventory is empty, can't swap!
+            return;
+        }
+
         (activeMask, inventoryMask) = (inventoryMask, activeMask);
 
         inventoryMask.EndUse();
