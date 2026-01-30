@@ -5,6 +5,11 @@ public class EmptyMaskSO : MaskSO
 {
     public override Mask GenerateMask()
     {
-        return new EmptyMask();
+        Mask emptyMask = new EmptyMask();
+
+        emptyMask.title = title;
+        emptyMask.visualPrefab = visualPrefab;
+
+        return emptyMask;
     }
 }

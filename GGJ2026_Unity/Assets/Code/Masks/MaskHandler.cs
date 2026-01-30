@@ -14,7 +14,7 @@ public class MaskHandler : MonoBehaviour
     private Mask inventoryMask;
 
     // events
-    public Action<SwapMaskData> OnMasksChanged;
+    public static Action<SwapMaskData> OnMasksChanged;
 
     public struct SwapMaskData
     {

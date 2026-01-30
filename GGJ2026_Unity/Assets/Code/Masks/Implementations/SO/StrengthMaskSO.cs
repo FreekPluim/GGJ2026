@@ -5,6 +5,11 @@ public class StrengthMaskSO : MaskSO
 {
     public override Mask GenerateMask()
     {
-        return new StrengthMask();
+        Mask strengthMask = new StrengthMask();
+
+        strengthMask.title = title;
+        strengthMask.visualPrefab = visualPrefab;
+
+        return strengthMask;
     }
 }

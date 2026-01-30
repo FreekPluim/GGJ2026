@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public abstract class Mask
 {
     public enum MaskType
@@ -19,6 +21,9 @@ public abstract class Mask
 
     public abstract bool CanUse { get; }
     public abstract UseState MaskUseState { get; }
+
+    public string title;
+    public GameObject visualPrefab;
 
     public abstract void StartUse();
     public abstract void EndUse();

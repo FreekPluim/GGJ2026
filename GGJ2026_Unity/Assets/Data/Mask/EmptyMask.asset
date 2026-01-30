@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111452a4718ee614fb9e4462b9d69498, type: 3}
   m_Name: EmptyMask
   m_EditorClassIdentifier: 
+  title: Empty Mask
+  visualPrefab: {fileID: 1622908469513714318, guid: 829b8e4dd281a3b45b4a5801d068aaa7, type: 3}

@@ -5,6 +5,11 @@ public class DashMaskSO : MaskSO
 {
     public override Mask GenerateMask()
     {
-        return new DashMask();
+        Mask dashMask = new DashMask();
+
+        dashMask.title = title;
+        dashMask.visualPrefab = visualPrefab;
+
+        return dashMask;
     }
 }
