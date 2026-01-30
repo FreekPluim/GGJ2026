@@ -2,56 +2,46 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] MapManager mapManager;
-
+    [SerializeField] KeybindsSO keybinds;
 
     Vector3Int currentTile;
 
     private void Awake()
     {
-        currentTile = mapManager.GetGridPositionFromPosition(transform.position);
+        currentTile = MapManager.Instance.GetGridPositionFromPosition(transform.position);
         transform.position = currentTile;
     }
 
     private void Update()
     {
-        if (mapManager != null)
+        if (MapManager.Instance != null)
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(keybinds.Right))
             {
-                if (mapManager.CheckIsWalkable(currentTile + Vector3Int.right))
-                {
-                    MovePlayer(Vector3Int.right);
-                }
+                TryMove(Vector3Int.right);
             }
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(keybinds.Left))
             {
-                if (mapManager.CheckIsWalkable(currentTile + Vector3Int.left))
-                {
-                    MovePlayer(Vector3Int.left);
-                }
+                TryMove(Vector3Int.left);
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(keybinds.Up))
             {
-                if (mapManager.CheckIsWalkable(currentTile + Vector3Int.up))
-                {
-                    MovePlayer(Vector3Int.up);
-                }
+                TryMove(Vector3Int.up);
             }
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(keybinds.Down))
             {
-                if (mapManager.CheckIsWalkable(currentTile + Vector3Int.down))
-                {
-                    MovePlayer(Vector3Int.down);
-                }
+                TryMove(Vector3Int.down);
             }
-
         }
     }
 
     void TryMove(Vector3Int direction)
     {
-        currentTile += direction;
+        if (!MapManager.Instance.CheckIsWalkable(direction))
+
+            //if(MapManager.Instance.CheckIsObstacle()
+
+            currentTile += direction;
         transform.position = currentTile;
     }
 }
