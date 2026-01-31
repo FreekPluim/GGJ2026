@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 11400000, guid: f2166cfffeeec69429fa7bc6c4788724, type: 2}
+  - {fileID: 11400000, guid: 2ca2c2f78e159b14daf3e528673dd682, type: 2}
   Walkable: 0
   Obstacle: 0
+  Skippable: 0
   ObstacleType: 1

@@ -9,10 +9,14 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private List<TileDataSO> tileData;
-    [SerializeField] Tile walkableObstacle;
+
+    [SerializeField] Tile walkableObstacle, endOpenTile, endClosedTile;
 
     private Dictionary<TileBase, TileDataSO> dataFromTiles;
     private Dictionary<Obstacle, Vector3Int> occupiedSpaces;
+
+    [SerializeField] Transform end;
+    Vector3Int endOnGrid;
 
 
     private void Awake()
@@ -29,8 +33,18 @@ public class MapManager : MonoBehaviour
                 dataFromTiles.Add(tile, data);
             }
         }
+
+        endOnGrid = GetGridPositionFromPosition(end.position);
     }
 
+    public void CloseExit()
+    {
+        tilemap.SetTile(endOnGrid, endClosedTile);
+    }
+    public void OpenExit()
+    {
+        tilemap.SetTile(endOnGrid, endOpenTile);
+    }
 
     public Vector3Int GetGridPositionFromPosition(Vector3 pos)
     {
@@ -74,5 +88,11 @@ public class MapManager : MonoBehaviour
     {
         occupiedSpaces.Remove(obstacle);
         Destroy(obstacle.gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(end.transform.position, 0.4f);
     }
 }

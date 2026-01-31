@@ -44,7 +44,6 @@ public class PlayerController : Singleton<PlayerController>
         transform.position = currentTile;
         maskHandler = GetComponent<MaskHandler>();
     }
-
     private void Update()
     {
         if (MapManager.Instance != null)
@@ -75,7 +74,6 @@ public class PlayerController : Singleton<PlayerController>
 
         UpdateAnimationStates();
     }
-
     void TryMove(Vector3Int direction)
     {
         if (!MapManager.Instance.CheckIsWalkable(currentTile + direction)) { return; }
@@ -106,7 +104,6 @@ public class PlayerController : Singleton<PlayerController>
             return;
         }
     }
-
     void TryDash()
     {
         Vector3Int facingVector = FaceDirToVector(facingDirection);
@@ -125,7 +122,6 @@ public class PlayerController : Singleton<PlayerController>
             OnPositionChanged?.Invoke(currentTile);
         }
     }
-
     void TryUseMaskAbility()
     {
         if (Input.GetKeyDown(keybinds.useMask))

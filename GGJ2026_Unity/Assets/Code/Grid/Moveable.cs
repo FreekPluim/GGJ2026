@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Moveable : Obstacle
 {
+    public UnityEvent<Vector3Int, GameObject> moved;
+
     public override void Start()
     {
         base.Start();
@@ -16,6 +19,7 @@ public class Moveable : Obstacle
             gridPosition += direction;
             transform.position = gridPosition;
             MapManager.Instance.MoveOccupiedTile(this, direction);
+            moved.Invoke(gridPosition, gameObject);
             return true;
         }
         if (MapManager.Instance.CheckIsObstacle(gridPosition + direction))
@@ -27,6 +31,7 @@ public class Moveable : Obstacle
                 MapManager.Instance.SetTileToWalkableObstacle(gridPosition);
                 MapManager.Instance.RemoveOccupiedTile(this);
                 KillSelf = true;
+                moved.Invoke(gridPosition, gameObject);
                 return true;
             }
         }

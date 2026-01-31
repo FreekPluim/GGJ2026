@@ -16,4 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 97d0826aacd10d04b8f3deb7a301cd84, type: 2}
   Walkable: 0
   Obstacle: 1
+  Skippable: 1
   ObstacleType: 0

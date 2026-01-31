@@ -6,20 +6,29 @@ public class Interactable : Obstacle
     [SerializeField] UnityEvent onActivate;
     [SerializeField] UnityEvent onDeactivate;
 
+    [SerializeField] GameObject objectOnTop;
+
     public override void Start()
     {
         base.Start();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void CheckOverlap(Vector3Int objectPosition, GameObject obj)
     {
-        onActivate.Invoke();
-        Debug.Log("Enter invoked");
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        onDeactivate.Invoke();
-        Debug.Log("Exit invoked");
+        if (objectPosition == gridPosition)
+        {
+            objectOnTop = obj;
+            onActivate.Invoke();
+        }
+        else
+        {
+            if (objectOnTop != obj) return;
+            else
+            {
+                objectOnTop = null;
+                onDeactivate.Invoke();
+            }
+        }
     }
 
 }

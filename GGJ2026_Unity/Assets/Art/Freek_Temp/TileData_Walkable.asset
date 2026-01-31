@@ -15,6 +15,8 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 5fdfd66154fb8c8499988ad97ea410f7, type: 2}
   - {fileID: 11400000, guid: f249ff9eb43aa6542b16c8e35a619788, type: 2}
+  - {fileID: 11400000, guid: 4afe5190232284649865116dd24f19f0, type: 2}
   Walkable: 1
   Obstacle: 1
+  Skippable: 0
   ObstacleType: 1
