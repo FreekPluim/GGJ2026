@@ -1,7 +1,8 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MaskContainer : MonoBehaviour
+public class MaskContainer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public enum MaskListenerType
     {
@@ -15,8 +16,8 @@ public class MaskContainer : MonoBehaviour
     [Header("References")]
     [SerializeField] private TMP_Text maskLabel;
     [SerializeField] private GameObject maskVisualHolder;
-
-    private Mask currentMaskData;
+    [SerializeField] private GameObject tooltipObject;
+    [SerializeField] private TMP_Text maskDescriptionLabel;
 
     private void Awake()
     {
@@ -42,8 +43,8 @@ public class MaskContainer : MonoBehaviour
             return;
         }
 
-        currentMaskData = newMaskData;
         maskLabel.text = newMaskData.title;
+        maskDescriptionLabel.text = newMaskData.description;
 
         if (maskVisualHolder.transform.childCount > 0)
         {
@@ -51,5 +52,15 @@ public class MaskContainer : MonoBehaviour
         }
 
         Instantiate(newMaskData.uiVisualPrefab, maskVisualHolder.transform);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        tooltipObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tooltipObject.SetActive(false);
     }
 }
