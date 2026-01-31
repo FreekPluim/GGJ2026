@@ -1,12 +1,18 @@
+using SadUtils;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] KeybindsSO keybinds;
     [SerializeField] MaskHandler maskHandler;
     [SerializeField] Vector3Int facingDirection = Vector3Int.up;
 
     Vector3Int currentTile;
+
+    protected override void Awake()
+    {
+        SetInstance(this);
+    }
 
     private void Start()
     {

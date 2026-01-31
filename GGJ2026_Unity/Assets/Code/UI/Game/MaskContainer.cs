@@ -16,6 +16,8 @@ public class MaskContainer : MonoBehaviour
     [SerializeField] private TMP_Text maskLabel;
     [SerializeField] private GameObject maskVisualHolder;
 
+    private Mask currentMaskData;
+
     private void Awake()
     {
         MaskHandler.OnMasksChanged += MaskHandler_OnMasksChanged;
@@ -40,6 +42,7 @@ public class MaskContainer : MonoBehaviour
             return;
         }
 
+        currentMaskData = newMaskData;
         maskLabel.text = newMaskData.title;
 
         if (maskVisualHolder.transform.childCount > 0)

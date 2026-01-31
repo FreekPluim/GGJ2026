@@ -82,4 +82,27 @@ public class MaskHandler : MonoBehaviour
     {
         return inventoryMask;
     }
+
+    public void PickupMask(Mask mask, out Mask droppedMask)
+    {
+        droppedMask = null;
+        if (inventoryMask == null)
+        {
+            inventoryMask = mask;
+            SwapMask();
+            return;
+        }
+
+        droppedMask = activeMask;
+        activeMask.EndUse();
+
+        activeMask = mask;
+        activeMask.StartUse();
+
+        OnMasksChanged?.Invoke(new SwapMaskData
+        {
+            newActiveMask = activeMask,
+            newInventoryMask = inventoryMask
+        });
+    }
 }
