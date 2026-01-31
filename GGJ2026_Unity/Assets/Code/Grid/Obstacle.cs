@@ -4,6 +4,9 @@ public class Obstacle : MonoBehaviour
 {
     public Vector3Int gridPosition;
 
+    public bool fillAble = false;
+    public bool walkable = false;
+
     public virtual void Start()
     {
         gridPosition = MapManager.Instance.GetGridPositionFromPosition(transform.position);

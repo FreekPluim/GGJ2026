@@ -40,17 +40,26 @@ public class PlayerController : MonoBehaviour
         if (!MapManager.Instance.CheckIsWalkable(currentTile + direction)) { return; }
         if (MapManager.Instance.GetOccupiedTile(currentTile + direction) != null)
         {
+            if (MapManager.Instance.GetOccupiedTile(currentTile + direction).walkable)
+            {
+                currentTile += direction;
+                transform.position = currentTile;
+                return;
+            }
+
             if (MapManager.Instance.GetOccupiedTile(currentTile + direction).TryMove(direction, out bool KillSelf))
             {
                 //MoveSelf
                 currentTile += direction;
                 transform.position = currentTile;
+                return;
             }
         }
         else
         {
             currentTile += direction;
             transform.position = currentTile;
+            return;
         }
     }
 }

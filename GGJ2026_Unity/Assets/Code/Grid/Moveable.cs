@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Moveable : Obstacle
 {
-    public bool fillAble = true;
-
     public override void Start()
     {
         base.Start();
@@ -17,6 +15,7 @@ public class Moveable : Obstacle
         {
             gridPosition += direction;
             transform.position = gridPosition;
+            MapManager.Instance.MoveOccupiedTile(this, direction);
             return true;
         }
         if (MapManager.Instance.CheckIsObstacle(gridPosition + direction))
