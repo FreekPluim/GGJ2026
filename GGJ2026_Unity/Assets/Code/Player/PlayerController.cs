@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] KeybindsSO keybinds;
+    [SerializeField] MaskHandler maskHandler;
+    [SerializeField] Vector3Int facingDirection = Vector3Int.up;
 
     Vector3Int currentTile;
 
@@ -10,6 +12,7 @@ public class PlayerController : MonoBehaviour
     {
         currentTile = MapManager.Instance.GetGridPositionFromPosition(transform.position);
         transform.position = currentTile;
+        maskHandler = GetComponent<MaskHandler>();
     }
 
     private void Update()
@@ -19,19 +22,25 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(keybinds.Right))
             {
                 TryMove(Vector3Int.right);
+                facingDirection = Vector3Int.right;
             }
             if (Input.GetKeyDown(keybinds.Left))
             {
                 TryMove(Vector3Int.left);
+                facingDirection = Vector3Int.left;
             }
             if (Input.GetKeyDown(keybinds.Up))
             {
                 TryMove(Vector3Int.up);
+                facingDirection = Vector3Int.up;
             }
             if (Input.GetKeyDown(keybinds.Down))
             {
                 TryMove(Vector3Int.down);
+                facingDirection = Vector3Int.down;
             }
+
+            TryUseMaskAbility();
         }
     }
 
@@ -46,7 +55,7 @@ public class PlayerController : MonoBehaviour
                 transform.position = currentTile;
                 return;
             }
-
+            if (maskHandler.GetActiveMask().Type != Mask.MaskType.Strength) return;
             if (MapManager.Instance.GetOccupiedTile(currentTile + direction).TryMove(direction, out bool KillSelf))
             {
                 //MoveSelf
@@ -60,6 +69,43 @@ public class PlayerController : MonoBehaviour
             currentTile += direction;
             transform.position = currentTile;
             return;
+        }
+    }
+
+    void TryDash()
+    {
+        //Check if block between
+        if (!MapManager.Instance.CheckIsWalkable(currentTile + facingDirection) && !MapManager.Instance.GetTileDataFromCell(currentTile + facingDirection).Skippable) return;
+
+        //Check if block you try dash on is walkable from occupied space perspective
+        if (MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection)) != null && !MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection)).walkable) return;
+        if (MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection * 2)) != null && !MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection * 2)).walkable) return;
+
+        //Check if block you try dash on is walkable
+        if (MapManager.Instance.CheckIsWalkable(currentTile + (facingDirection * 2)))
+        {
+            currentTile += (facingDirection * 2);
+            transform.position = currentTile;
+        }
+    }
+
+    void TryUseMaskAbility()
+    {
+        if (Input.GetKeyDown(keybinds.useMask))
+        {
+            switch (maskHandler.GetActiveMask().Type)
+            {
+                case Mask.MaskType.Dash:
+
+                    if (maskHandler.GetActiveMask().CanUse)
+                    {
+                        TryDash();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

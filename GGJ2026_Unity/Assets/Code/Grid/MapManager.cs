@@ -48,6 +48,10 @@ public class MapManager : MonoBehaviour
     {
         return dataFromTiles[tilemap.GetTile(cell)].ObstacleType;
     }
+    public TileDataSO GetTileDataFromCell(Vector3Int cell)
+    {
+        return dataFromTiles[tilemap.GetTile(cell)];
+    }
     public void SetTileToWalkableObstacle(Vector3Int cell)
     {
         tilemap.SetTile(cell, walkableObstacle);
