@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(keybinds.restartLevel))
         {
-            LoadScene(2);
+            LoadSceneRelative(0);
         }
     }
 
