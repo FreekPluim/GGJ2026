@@ -1,9 +1,8 @@
-using SadUtils;
 using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : MonoBehaviour
 {
     private enum FacingDirection
     {
@@ -12,6 +11,8 @@ public class PlayerController : Singleton<PlayerController>
         Down = 2,
         Left = 3
     }
+
+    public static PlayerController Instance;
 
     [SerializeField] KeybindsSO keybinds;
     public MaskHandler maskHandler;
@@ -38,11 +39,13 @@ public class PlayerController : Singleton<PlayerController>
     int facingDirAnimId;
     int maskIDAnimId;
 
-    protected override void Awake()
+    private void Awake()
     {
         // Cache Animator Ids
         facingDirAnimId = Animator.StringToHash("LookDirection");
         maskIDAnimId = Animator.StringToHash("MaskID");
+
+        Instance = this;
     }
 
     private void Start()
@@ -51,6 +54,7 @@ public class PlayerController : Singleton<PlayerController>
         transform.position = currentTile;
         maskHandler = GetComponent<MaskHandler>();
     }
+
     private void Update()
     {
         if (MapManager.Instance != null)
