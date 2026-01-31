@@ -4,9 +4,9 @@ public abstract class Mask
 {
     public enum MaskType
     {
-        Empty,
-        Strength,
-        Dash
+        Empty = 0,
+        Strength = 1,
+        Dash = 2
     }
 
     public enum UseState

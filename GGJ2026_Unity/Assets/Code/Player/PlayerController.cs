@@ -4,17 +4,38 @@ using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
+    private enum FacingDirection
+    {
+        Up = 0,
+        Right = 1,
+        Down = 2,
+        Left = 3
+    }
+
     [SerializeField] KeybindsSO keybinds;
     public MaskHandler maskHandler;
-    [SerializeField] Vector3Int facingDirection = Vector3Int.up;
+    [SerializeField] Animator animator;
+
+    [Space]
+    [SerializeField] FacingDirection facingDirection = FacingDirection.Down;
+    // Differ from the facingDir so that it updates on frame 1
+    private FacingDirection lastFacingDirection = FacingDirection.Up;
+    private int lastMaskID = -1;
 
     Vector3Int currentTile;
 
     public static Action<Vector3Int> OnPositionChanged;
 
+    int facingDirAnimId;
+    int maskIDAnimId;
+
     protected override void Awake()
     {
         SetInstance(this);
+
+        // Cache Animator Ids
+        facingDirAnimId = Animator.StringToHash("LookDirection");
+        maskIDAnimId = Animator.StringToHash("MaskID");
     }
 
     private void Start()
@@ -31,26 +52,28 @@ public class PlayerController : Singleton<PlayerController>
             if (Input.GetKeyDown(keybinds.Right))
             {
                 TryMove(Vector3Int.right);
-                facingDirection = Vector3Int.right;
+                facingDirection = FacingDirection.Right;
             }
             if (Input.GetKeyDown(keybinds.Left))
             {
                 TryMove(Vector3Int.left);
-                facingDirection = Vector3Int.left;
+                facingDirection = FacingDirection.Left;
             }
             if (Input.GetKeyDown(keybinds.Up))
             {
                 TryMove(Vector3Int.up);
-                facingDirection = Vector3Int.up;
+                facingDirection = FacingDirection.Up;
             }
             if (Input.GetKeyDown(keybinds.Down))
             {
                 TryMove(Vector3Int.down);
-                facingDirection = Vector3Int.down;
+                facingDirection = FacingDirection.Down;
             }
 
             TryUseMaskAbility();
         }
+
+        UpdateAnimationStates();
     }
 
     void TryMove(Vector3Int direction)
@@ -86,17 +109,18 @@ public class PlayerController : Singleton<PlayerController>
 
     void TryDash()
     {
+        Vector3Int facingVector = FaceDirToVector(facingDirection);
         //Check if block between
-        if (!MapManager.Instance.CheckIsWalkable(currentTile + facingDirection) && !MapManager.Instance.GetTileDataFromCell(currentTile + facingDirection).Skippable) return;
+        if (!MapManager.Instance.CheckIsWalkable(currentTile + facingVector) && !MapManager.Instance.GetTileDataFromCell(currentTile + facingVector).Skippable) return;
 
         //Check if block you try dash on is walkable from occupied space perspective
-        if (MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection)) != null && !MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection)).walkable) return;
-        if (MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection * 2)) != null && !MapManager.Instance.GetOccupiedTile(currentTile + (facingDirection * 2)).walkable) return;
+        if (MapManager.Instance.GetOccupiedTile(currentTile + (facingVector)) != null && !MapManager.Instance.GetOccupiedTile(currentTile + (facingVector)).walkable) return;
+        if (MapManager.Instance.GetOccupiedTile(currentTile + (facingVector * 2)) != null && !MapManager.Instance.GetOccupiedTile(currentTile + (facingVector * 2)).walkable) return;
 
         //Check if block you try dash on is walkable
-        if (MapManager.Instance.CheckIsWalkable(currentTile + (facingDirection * 2)))
+        if (MapManager.Instance.CheckIsWalkable(currentTile + (facingVector * 2)))
         {
-            currentTile += (facingDirection * 2);
+            currentTile += (facingVector * 2);
             transform.position = currentTile;
             OnPositionChanged?.Invoke(currentTile);
         }
@@ -120,5 +144,46 @@ public class PlayerController : Singleton<PlayerController>
                     break;
             }
         }
+    }
+
+    private void UpdateAnimationStates()
+    {
+        UpdateFacingDirAnimParam();
+        UpdateMaskIDAnimParam();
+    }
+
+    private void UpdateFacingDirAnimParam()
+    {
+        if (facingDirection == lastFacingDirection)
+        {
+            return;
+        }
+
+        animator.SetInteger(facingDirAnimId, (int)facingDirection);
+        lastFacingDirection = facingDirection;
+    }
+
+    private void UpdateMaskIDAnimParam()
+    {
+        int maskID = (int)maskHandler.GetActiveMask().Type;
+        if (maskID == lastMaskID)
+        {
+            return;
+        }
+
+        animator.SetInteger(maskIDAnimId, maskID);
+        lastMaskID = maskID;
+    }
+
+    private Vector3Int FaceDirToVector(FacingDirection facingDirection)
+    {
+        return facingDirection switch
+        {
+            FacingDirection.Up => Vector3Int.up,
+            FacingDirection.Right => Vector3Int.right,
+            FacingDirection.Down => Vector3Int.down,
+            FacingDirection.Left => Vector3Int.left,
+            _ => Vector3Int.zero
+        };
     }
 }
