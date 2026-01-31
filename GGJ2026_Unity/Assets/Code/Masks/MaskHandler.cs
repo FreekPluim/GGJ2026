@@ -26,7 +26,7 @@ public class MaskHandler : MonoBehaviour
     {
         if (startMask == null)
         {
-            Debug.Log("CATASTROPHIC FAILURE LMAO\nI DIE NOW GOODBYE THANK");
+            Debug.LogError("CATASTROPHIC FAILURE LMAO\nI DIE NOW GOODBYE THANK");
             return;
         }
 
@@ -37,6 +37,12 @@ public class MaskHandler : MonoBehaviour
 
         activeMask = startMask.GenerateMask();
         activeMask.StartUse();
+
+        OnMasksChanged?.Invoke(new SwapMaskData
+        {
+            newActiveMask = activeMask,
+            newInventoryMask = inventoryMask
+        });
     }
 
     private void Update()

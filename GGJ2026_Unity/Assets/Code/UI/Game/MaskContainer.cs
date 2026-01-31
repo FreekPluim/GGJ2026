@@ -29,6 +29,16 @@ public class MaskContainer : MonoBehaviour
     private void MaskHandler_OnMasksChanged(MaskHandler.SwapMaskData data)
     {
         Mask newMaskData = listenerType == MaskListenerType.Active ? data.newActiveMask : data.newInventoryMask;
+        if (newMaskData == null)
+        {
+            maskLabel.text = "Empty";
+
+            if (maskVisualHolder.transform.childCount > 0)
+            {
+                Destroy(maskVisualHolder.transform.GetChild(0).gameObject);
+            }
+            return;
+        }
 
         maskLabel.text = newMaskData.title;
 
