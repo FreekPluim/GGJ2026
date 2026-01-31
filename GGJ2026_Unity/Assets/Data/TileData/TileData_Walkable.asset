@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddcc88b0321d09c44999af703bf5e094, type: 3}
-  m_Name: TileData_NonWalkable
+  m_Name: TileData_Walkable
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: f2166cfffeeec69429fa7bc6c4788724, type: 2}
-  - {fileID: 11400000, guid: 2ca2c2f78e159b14daf3e528673dd682, type: 2}
-  Walkable: 0
-  Obstacle: 0
+  - {fileID: 11400000, guid: a5f167299ada62c46a9f029231337c10, type: 2}
+  - {fileID: 11400000, guid: 29f5ae2ebb2204e43a5a76a52fa6b834, type: 2}
+  - {fileID: 11400000, guid: e23870b96d36b7c41aa95b6aa0977588, type: 2}
+  - {fileID: 11400000, guid: 7d67c0adde1db3c4a86ae983694ca861, type: 2}
+  Walkable: 1
+  Obstacle: 1
   Skippable: 0
   ObstacleType: 1

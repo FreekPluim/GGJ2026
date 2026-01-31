@@ -7,7 +7,7 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager Instance;
 
-    [SerializeField] private Tilemap tilemap;
+    [SerializeField] private List<Tilemap> tilemaps;
     [SerializeField] private List<TileDataSO> tileData;
 
     [SerializeField] Tile walkableObstacle, endOpenTile, endClosedTile;
@@ -47,11 +47,11 @@ public class MapManager : MonoBehaviour
 
     public void CloseExit()
     {
-        tilemap.SetTile(endOnGrid, endClosedTile);
+        tilemaps[0].SetTile(endOnGrid, endClosedTile);
     }
     public void OpenExit()
     {
-        tilemap.SetTile(endOnGrid, endOpenTile);
+        tilemaps[0].SetTile(endOnGrid, endOpenTile);
     }
     public void ReachedEnd(Vector3Int pos, GameObject obj)
     {
@@ -64,27 +64,47 @@ public class MapManager : MonoBehaviour
 
     public Vector3Int GetGridPositionFromPosition(Vector3 pos)
     {
-        return tilemap.WorldToCell(pos);
+        return tilemaps[0].WorldToCell(pos);
     }
     public bool CheckIsWalkable(Vector3Int cell)
     {
-        return dataFromTiles[tilemap.GetTile(cell)].Walkable;
+        //Check if wall
+        if (tilemaps[1].GetTile(cell) != null)
+        {
+            return false;
+        }
+        else if (tilemaps[0].GetTile(cell) != null)
+        {
+            return dataFromTiles[tilemaps[0].GetTile(cell)].Walkable;
+        }
+
+        return false;
     }
     public bool CheckIsObstacle(Vector3Int cell)
     {
-        return dataFromTiles[tilemap.GetTile(cell)].Obstacle;
+        //Check if wall
+        if (tilemaps[1].GetTile(cell) != null)
+        {
+            return false;
+        }
+        else if (tilemaps[0].GetTile(cell) != null)
+        {
+            return dataFromTiles[tilemaps[0].GetTile(cell)].Obstacle;
+        }
+
+        return false;
     }
     public ObstacleType GetObstacleType(Vector3Int cell)
     {
-        return dataFromTiles[tilemap.GetTile(cell)].ObstacleType;
+        return dataFromTiles[tilemaps[0].GetTile(cell)].ObstacleType;
     }
     public TileDataSO GetTileDataFromCell(Vector3Int cell)
     {
-        return dataFromTiles[tilemap.GetTile(cell)];
+        return dataFromTiles[tilemaps[0].GetTile(cell)];
     }
     public void SetTileToWalkableObstacle(Vector3Int cell)
     {
-        tilemap.SetTile(cell, walkableObstacle);
+        tilemaps[0].SetTile(cell, walkableObstacle);
     }
 
     //Occupied Tile stuff
