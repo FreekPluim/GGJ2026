@@ -1702,6 +1702,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2766737755368553175, guid: a00ab3d094dba5b40a4a543b0e6e4529, type: 3}
+      propertyPath: startMask
+      value: 
+      objectReference: {fileID: 11400000, guid: 1265ae5ee2b68a3438ae4c50615672ef, type: 2}
+    - target: {fileID: 2766737755368553175, guid: a00ab3d094dba5b40a4a543b0e6e4529, type: 3}
+      propertyPath: startInventoryMask
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5110644657234539862, guid: a00ab3d094dba5b40a4a543b0e6e4529, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.95
