@@ -4,15 +4,17 @@ public class Obstacle : MonoBehaviour
 {
     public Vector3Int gridPosition;
 
-    private void Awake()
+    public virtual void Start()
     {
         gridPosition = MapManager.Instance.GetGridPositionFromPosition(transform.position);
         MapManager.Instance.SetOccupiedTile(gridPosition, this);
+        transform.position = gridPosition;
     }
 
 
-    public virtual bool TryMove(Vector3Int direction)
+    public virtual bool TryMove(Vector3Int direction, out bool KillSelf)
     {
+        KillSelf = false;
         return false;
     }
 }

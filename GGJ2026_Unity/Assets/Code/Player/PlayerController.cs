@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3Int currentTile;
 
-    private void Awake()
+    private void Start()
     {
         currentTile = MapManager.Instance.GetGridPositionFromPosition(transform.position);
         transform.position = currentTile;
@@ -37,11 +37,20 @@ public class PlayerController : MonoBehaviour
 
     void TryMove(Vector3Int direction)
     {
-        if (!MapManager.Instance.CheckIsWalkable(direction))
-
-            //if(MapManager.Instance.CheckIsObstacle()
-
+        if (!MapManager.Instance.CheckIsWalkable(currentTile + direction)) { return; }
+        if (MapManager.Instance.GetOccupiedTile(currentTile + direction) != null)
+        {
+            if (MapManager.Instance.GetOccupiedTile(currentTile + direction).TryMove(direction, out bool KillSelf))
+            {
+                //MoveSelf
+                currentTile += direction;
+                transform.position = currentTile;
+            }
+        }
+        else
+        {
             currentTile += direction;
-        transform.position = currentTile;
+            transform.position = currentTile;
+        }
     }
 }

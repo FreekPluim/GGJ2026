@@ -20,6 +20,7 @@ public class MapManager : MonoBehaviour
         Instance = this;
 
         dataFromTiles = new Dictionary<TileBase, TileDataSO>();
+        occupiedSpaces = new Dictionary<Obstacle, Vector3Int>();
 
         foreach (var data in tileData)
         {
@@ -68,5 +69,6 @@ public class MapManager : MonoBehaviour
     public void RemoveOccupiedTile(Obstacle obstacle)
     {
         occupiedSpaces.Remove(obstacle);
+        Destroy(obstacle.gameObject);
     }
 }
