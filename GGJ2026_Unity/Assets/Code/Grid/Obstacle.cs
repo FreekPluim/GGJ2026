@@ -15,9 +15,8 @@ public class Obstacle : MonoBehaviour
     }
 
 
-    public virtual bool TryMove(Vector3Int direction, out bool KillSelf)
+    public virtual bool TryMove(Vector3Int direction)
     {
-        KillSelf = false;
         return false;
     }
 }

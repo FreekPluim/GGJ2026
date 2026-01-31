@@ -23,7 +23,7 @@ public class MaskPickup : Obstacle
         PlayerController.OnPositionChanged -= PlayerController_OnPositionChanged;
     }
 
-    private void PlayerController_OnPositionChanged(Vector3Int newPosition)
+    private void PlayerController_OnPositionChanged(Vector3Int newPosition, GameObject obj)
     {
         canPickup = newPosition == gridPosition;
     }

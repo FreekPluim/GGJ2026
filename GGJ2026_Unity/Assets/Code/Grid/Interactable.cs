@@ -11,6 +11,11 @@ public class Interactable : Obstacle
     public override void Start()
     {
         base.Start();
+        PlayerController.OnPositionChanged += CheckOverlap;
+    }
+    private void OnDestroy()
+    {
+        PlayerController.OnPositionChanged -= CheckOverlap;
     }
 
     public void CheckOverlap(Vector3Int objectPosition, GameObject obj)

@@ -3,23 +3,23 @@ using UnityEngine.Events;
 
 public class Moveable : Obstacle
 {
-    public UnityEvent<Vector3Int, GameObject> moved;
+    public UnityEvent<Vector3Int, GameObject> ChangedPosition;
 
     public override void Start()
     {
         base.Start();
     }
 
-    public override bool TryMove(Vector3Int direction, out bool KillSelf)
+    public override bool TryMove(Vector3Int direction)
     {
-        KillSelf = false;
+        if (MapManager.Instance.GetOccupiedTile(gridPosition + direction) != null && !MapManager.Instance.GetOccupiedTile(gridPosition + direction).walkable) return false;
 
         if (MapManager.Instance.CheckIsWalkable(gridPosition + direction))
         {
             gridPosition += direction;
             transform.position = gridPosition;
             MapManager.Instance.MoveOccupiedTile(this, direction);
-            moved.Invoke(gridPosition, gameObject);
+            ChangedPosition.Invoke(gridPosition, gameObject);
             return true;
         }
         if (MapManager.Instance.CheckIsObstacle(gridPosition + direction))
@@ -30,8 +30,7 @@ public class Moveable : Obstacle
                 transform.position = gridPosition;
                 MapManager.Instance.SetTileToWalkableObstacle(gridPosition);
                 MapManager.Instance.RemoveOccupiedTile(this);
-                KillSelf = true;
-                moved.Invoke(gridPosition, gameObject);
+                ChangedPosition.Invoke(gridPosition, gameObject);
                 return true;
             }
         }

@@ -24,15 +24,13 @@ public class PlayerController : Singleton<PlayerController>
 
     Vector3Int currentTile;
 
-    public static Action<Vector3Int> OnPositionChanged;
+    public static Action<Vector3Int, GameObject> OnPositionChanged;
 
     int facingDirAnimId;
     int maskIDAnimId;
 
     protected override void Awake()
     {
-        SetInstance(this);
-
         // Cache Animator Ids
         facingDirAnimId = Animator.StringToHash("LookDirection");
         maskIDAnimId = Animator.StringToHash("MaskID");
@@ -83,16 +81,16 @@ public class PlayerController : Singleton<PlayerController>
             {
                 currentTile += direction;
                 transform.position = currentTile;
-                OnPositionChanged?.Invoke(currentTile);
+                OnPositionChanged?.Invoke(currentTile, gameObject);
                 return;
             }
             if (maskHandler.GetActiveMask().Type != Mask.MaskType.Strength) return;
-            if (MapManager.Instance.GetOccupiedTile(currentTile + direction).TryMove(direction, out bool KillSelf))
+            if (MapManager.Instance.GetOccupiedTile(currentTile + direction).TryMove(direction))
             {
                 //MoveSelf
                 currentTile += direction;
                 transform.position = currentTile;
-                OnPositionChanged?.Invoke(currentTile);
+                OnPositionChanged?.Invoke(currentTile, gameObject);
                 return;
             }
         }
@@ -100,7 +98,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             currentTile += direction;
             transform.position = currentTile;
-            OnPositionChanged?.Invoke(currentTile);
+            OnPositionChanged?.Invoke(currentTile, gameObject);
             return;
         }
     }
@@ -119,7 +117,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             currentTile += (facingVector * 2);
             transform.position = currentTile;
-            OnPositionChanged?.Invoke(currentTile);
+            OnPositionChanged?.Invoke(currentTile, gameObject);
         }
     }
     void TryUseMaskAbility()

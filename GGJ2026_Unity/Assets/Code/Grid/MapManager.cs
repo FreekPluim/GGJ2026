@@ -36,6 +36,14 @@ public class MapManager : MonoBehaviour
 
         endOnGrid = GetGridPositionFromPosition(end.position);
     }
+    private void Start()
+    {
+        PlayerController.OnPositionChanged += ReachedEnd;
+    }
+    private void OnDestroy()
+    {
+        PlayerController.OnPositionChanged -= ReachedEnd;
+    }
 
     public void CloseExit()
     {
@@ -45,6 +53,14 @@ public class MapManager : MonoBehaviour
     {
         tilemap.SetTile(endOnGrid, endOpenTile);
     }
+    public void ReachedEnd(Vector3Int pos, GameObject obj)
+    {
+        if (pos == endOnGrid)
+        {
+            LevelManager.LoadSceneRelative(1);
+        }
+    }
+
 
     public Vector3Int GetGridPositionFromPosition(Vector3 pos)
     {

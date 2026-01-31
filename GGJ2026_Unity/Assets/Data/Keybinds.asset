@@ -19,3 +19,4 @@ MonoBehaviour:
   Right: 100
   useMask: 101
   pickup: 32
+  restartLevel: 114
