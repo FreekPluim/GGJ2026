@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c576c38e782ada3419192bf6403d7507
+guid: 82599eb226e59e64681af481e6b15fe3
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,10 +124,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
+        x: 1
+        y: 95
+        width: 30
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
+        x: 1
+        y: 63
+        width: 30
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
+        x: 33
+        y: 95
+        width: 30
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,9 +190,9 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
+        x: 33
+        y: 63
+        width: 30
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -213,9 +213,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 31
+        width: 29
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,9 +234,9 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
+        x: 2
+        y: 0
+        width: 29
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -256,9 +256,9 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
+        x: 32
+        y: 31
+        width: 29
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Dash_7
       rect:
         serializedVersion: 2
-        x: 32
+        x: 34
         y: 0
-        width: 32
-        height: 32
+        width: 29
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bcd67ee80f3873748b84d2b0176adb65
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
