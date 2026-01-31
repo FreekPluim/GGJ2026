@@ -138,6 +138,10 @@ MonoBehaviour:
   maskHandler: {fileID: 2766737755368553175}
   animator: {fileID: 6153090326532928372}
   facingDirection: 2
+  visuals: {fileID: 5376244129899146020}
+  bonkAnimHoldTime: 0.1
+  bonkAnimMoveSpeed: 2
+  bonkDistance: 0.1
 --- !u!114 &2766737755368553175
 MonoBehaviour:
   m_ObjectHideFlags: 0

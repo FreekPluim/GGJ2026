@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,9 +119,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 31
-        height: 97
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Strenght_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 95
-        width: 30
-        height: 33
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Strenght_2
       rect:
         serializedVersion: 2
-        x: 33
-        y: 95
-        width: 30
-        height: 33
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Strenght_3
       rect:
         serializedVersion: 2
-        x: 33
-        y: 63
-        width: 30
-        height: 33
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: Playercharacter_Sheet_Strenght_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 31
-        width: 29
-        height: 33
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,9 +228,9 @@ TextureImporter:
       name: Playercharacter_Sheet_Strenght_5
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 29
+        x: 32
+        y: 32
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -246,11 +246,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Playercharacter_Sheet_Strenght_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b0e35c8caa4f745af8af3a762f69a9
+      internalID: -1327420810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playercharacter_Sheet_Strenght_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5bfd4c2573f2d34cb608b5a1627e420
+      internalID: 1820632782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ae6725e4b185ec547876d4c18c9317f4
     internalID: 0
     vertices: []
     indices: 
@@ -266,6 +310,8 @@ TextureImporter:
       Playercharacter_Sheet_Strenght_3: -6755580130427053692
       Playercharacter_Sheet_Strenght_4: 1698394314391592845
       Playercharacter_Sheet_Strenght_5: -8728283426153932410
+      Playercharacter_Sheet_Strenght_6: -1327420810
+      Playercharacter_Sheet_Strenght_7: 1820632782
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

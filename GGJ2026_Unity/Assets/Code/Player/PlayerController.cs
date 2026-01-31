@@ -134,7 +134,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             currentTile += (facingVector * 2);
             transform.position = currentTile;
-            OnPositionChanged?.Invoke(currentTile);
+            OnPositionChanged?.Invoke(currentTile, gameObject);
             return;
         }
     }
