@@ -19,6 +19,8 @@ public class MaskContainer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private GameObject tooltipObject;
     [SerializeField] private TMP_Text maskDescriptionLabel;
 
+    private Mask maskData;
+
     private void Awake()
     {
         MaskHandler.OnMasksChanged += MaskHandler_OnMasksChanged;
@@ -40,11 +42,17 @@ public class MaskContainer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {
                 Destroy(maskVisualHolder.transform.GetChild(0).gameObject);
             }
+
+            if (tooltipObject.activeSelf)
+            {
+                tooltipObject.SetActive(false);
+            }
             return;
         }
 
         maskLabel.text = newMaskData.title;
         maskDescriptionLabel.text = newMaskData.description;
+        maskData = newMaskData;
 
         if (maskVisualHolder.transform.childCount > 0)
         {
@@ -56,6 +64,11 @@ public class MaskContainer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (maskData == null)
+        {
+            return;
+        }
+
         tooltipObject.SetActive(true);
     }
 

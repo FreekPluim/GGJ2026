@@ -1,5 +1,6 @@
 using SadUtils;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
@@ -21,6 +22,14 @@ public class PlayerController : Singleton<PlayerController>
     // Differ from the facingDir so that it updates on frame 1
     private FacingDirection lastFacingDirection = FacingDirection.Up;
     private int lastMaskID = -1;
+
+    [Header("Settings")]
+    [SerializeField] private Transform visuals;
+    [SerializeField] private float bonkAnimHoldTime;
+    [SerializeField] private float bonkAnimMoveSpeed;
+    [SerializeField] private float bonkDistance;
+    private Vector3 lastBonkAnimStartPos;
+    private Coroutine bonkRoutine;
 
     Vector3Int currentTile;
 
@@ -46,33 +55,40 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (MapManager.Instance != null)
         {
+            bool gotMoveInput = false;
             if (Input.GetKeyDown(keybinds.Right))
             {
+                gotMoveInput = true;
                 TryMove(Vector3Int.right);
                 facingDirection = FacingDirection.Right;
             }
             if (Input.GetKeyDown(keybinds.Left))
             {
+                gotMoveInput = true;
                 TryMove(Vector3Int.left);
                 facingDirection = FacingDirection.Left;
             }
             if (Input.GetKeyDown(keybinds.Up))
             {
+                gotMoveInput = true;
                 TryMove(Vector3Int.up);
                 facingDirection = FacingDirection.Up;
             }
             if (Input.GetKeyDown(keybinds.Down))
             {
+                gotMoveInput = true;
                 TryMove(Vector3Int.down);
                 facingDirection = FacingDirection.Down;
             }
+            if (gotMoveInput) { HandleBonk(); }
 
             TryUseMaskAbility();
         }
 
         UpdateAnimationStates();
     }
-    void TryMove(Vector3Int direction)
+
+    private void TryMove(Vector3Int direction)
     {
         if (!MapManager.Instance.CheckIsWalkable(currentTile + direction)) { return; }
         if (MapManager.Instance.GetOccupiedTile(currentTile + direction) != null)
@@ -102,7 +118,8 @@ public class PlayerController : Singleton<PlayerController>
             return;
         }
     }
-    void TryDash()
+
+    private void TryDash()
     {
         Vector3Int facingVector = FaceDirToVector(facingDirection);
         //Check if block between
@@ -117,7 +134,8 @@ public class PlayerController : Singleton<PlayerController>
         {
             currentTile += (facingVector * 2);
             transform.position = currentTile;
-            OnPositionChanged?.Invoke(currentTile, gameObject);
+            OnPositionChanged?.Invoke(currentTile);
+            return;
         }
     }
     void TryUseMaskAbility()
@@ -131,6 +149,7 @@ public class PlayerController : Singleton<PlayerController>
                     if (maskHandler.GetActiveMask().CanUse)
                     {
                         TryDash();
+                        HandleBonk();
                     }
 
                     break;
@@ -179,5 +198,39 @@ public class PlayerController : Singleton<PlayerController>
             FacingDirection.Left => Vector3Int.left,
             _ => Vector3Int.zero
         };
+    }
+
+    private void HandleBonk()
+    {
+        if (bonkRoutine != null)
+        {
+            StopCoroutine(bonkRoutine);
+            visuals.localPosition = lastBonkAnimStartPos;
+        }
+
+        bonkRoutine = StartCoroutine(BonkCo());
+    }
+
+    private IEnumerator BonkCo()
+    {
+        Vector3 startPos = visuals.localPosition;
+        Vector3 targetOffset = startPos + (Vector3)FaceDirToVector(facingDirection) * bonkDistance;
+        lastBonkAnimStartPos = startPos;
+
+        while (Vector3.Distance(targetOffset, visuals.localPosition) > 0.01f)
+        {
+            float moveDistance = bonkAnimMoveSpeed * Time.deltaTime;
+            visuals.localPosition = Vector3.MoveTowards(visuals.localPosition, targetOffset, moveDistance);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(bonkAnimHoldTime);
+
+        while (Vector3.Distance(visuals.localPosition, startPos) > 0.01f)
+        {
+            float moveDistance = bonkAnimMoveSpeed * Time.deltaTime;
+            visuals.localPosition = Vector3.MoveTowards(visuals.localPosition, startPos, moveDistance);
+            yield return null;
+        }
     }
 }
