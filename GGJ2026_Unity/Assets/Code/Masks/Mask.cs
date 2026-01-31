@@ -23,7 +23,17 @@ public abstract class Mask
     public abstract UseState MaskUseState { get; }
 
     public string title;
-    public GameObject visualPrefab;
+    public GameObject pickupVisualPrefab;
+    public GameObject uiVisualPrefab;
+    public string description;
+
+    public Mask(MaskSO data)
+    {
+        title = data.title;
+        pickupVisualPrefab = data.pickupVisualPrefab;
+        uiVisualPrefab = data.uiVisualPrefab;
+        description = data.description;
+    }
 
     public abstract void StartUse();
     public abstract void EndUse();

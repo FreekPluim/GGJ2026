@@ -1,13 +1,16 @@
 using SadUtils;
+using System;
 using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] KeybindsSO keybinds;
-    [SerializeField] MaskHandler maskHandler;
+    public MaskHandler maskHandler;
     [SerializeField] Vector3Int facingDirection = Vector3Int.up;
 
     Vector3Int currentTile;
+
+    public static Action<Vector3Int> OnPositionChanged;
 
     protected override void Awake()
     {
@@ -59,6 +62,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 currentTile += direction;
                 transform.position = currentTile;
+                OnPositionChanged?.Invoke(currentTile);
                 return;
             }
             if (maskHandler.GetActiveMask().Type != Mask.MaskType.Strength) return;
@@ -67,6 +71,7 @@ public class PlayerController : Singleton<PlayerController>
                 //MoveSelf
                 currentTile += direction;
                 transform.position = currentTile;
+                OnPositionChanged?.Invoke(currentTile);
                 return;
             }
         }
@@ -74,6 +79,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             currentTile += direction;
             transform.position = currentTile;
+            OnPositionChanged?.Invoke(currentTile);
             return;
         }
     }
@@ -92,6 +98,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             currentTile += (facingDirection * 2);
             transform.position = currentTile;
+            OnPositionChanged?.Invoke(currentTile);
         }
     }
 

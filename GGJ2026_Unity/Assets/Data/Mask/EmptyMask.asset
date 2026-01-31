@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: EmptyMask
   m_EditorClassIdentifier: 
   title: Empty Mask
-  visualPrefab: {fileID: 1622908469513714318, guid: 829b8e4dd281a3b45b4a5801d068aaa7, type: 3}
+  uiVisualPrefab: {fileID: 1622908469513714318, guid: 829b8e4dd281a3b45b4a5801d068aaa7, type: 3}
+  pickupVisualPrefab: {fileID: 4780931307847537033, guid: 9e55334f63b5be947b4bbd3a91a9d818, type: 3}
+  description: empy, liek meh face

@@ -7,4 +7,5 @@ public class KeybindsSO : ScriptableObject
     public KeyCode swapMaskBind;
     public KeyCode Up, Down, Left, Right;
     public KeyCode useMask;
+    public KeyCode pickup;
 }

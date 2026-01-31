@@ -18,3 +18,4 @@ MonoBehaviour:
   Left: 97
   Right: 100
   useMask: 101
+  pickup: 32

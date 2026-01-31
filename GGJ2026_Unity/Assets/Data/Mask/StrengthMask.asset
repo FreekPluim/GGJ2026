@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: StrengthMask
   m_EditorClassIdentifier: 
   title: Strength Mask
-  visualPrefab: {fileID: 3246321993931791847, guid: 07724b25a34a7fd4a997d91bee227e6f, type: 3}
+  uiVisualPrefab: {fileID: 3246321993931791847, guid: 07724b25a34a7fd4a997d91bee227e6f, type: 3}
+  pickupVisualPrefab: {fileID: 7151281386846147727, guid: 7014b52076416244eae967062d54e803, type: 3}
+  description: ME STRONG ME PUSH YES

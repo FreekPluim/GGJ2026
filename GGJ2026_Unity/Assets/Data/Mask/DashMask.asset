@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DashMask
   m_EditorClassIdentifier: 
   title: Dash Mask
-  visualPrefab: {fileID: 3535522013036704660, guid: 7e362e95e6173604a8cf8c5c12f39eb7, type: 3}
+  uiVisualPrefab: {fileID: 3535522013036704660, guid: 7e362e95e6173604a8cf8c5c12f39eb7, type: 3}
+  pickupVisualPrefab: {fileID: 4415950572391893675, guid: bfd5fc81a621eb2498f2e34396cf7525, type: 3}
+  description: Makes you go zoomies!! yayy

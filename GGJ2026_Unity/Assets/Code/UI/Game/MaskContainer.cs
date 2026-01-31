@@ -50,6 +50,6 @@ public class MaskContainer : MonoBehaviour
             Destroy(maskVisualHolder.transform.GetChild(0).gameObject);
         }
 
-        Instantiate(newMaskData.visualPrefab, maskVisualHolder.transform);
+        Instantiate(newMaskData.uiVisualPrefab, maskVisualHolder.transform);
     }
 }
