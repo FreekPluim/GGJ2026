@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1062418640253064794, guid: 12f586d7dffe3cc40b89b20bc966f96e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 1788713322780969254, guid: 12f586d7dffe3cc40b89b20bc966f96e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1362,6 +1366,10 @@ PrefabInstance:
     - target: {fileID: 2866159890276724250, guid: 12f586d7dffe3cc40b89b20bc966f96e, type: 3}
       propertyPath: m_Tiles.Array.data[50].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064210245835049438, guid: 12f586d7dffe3cc40b89b20bc966f96e, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6756343929745472147, guid: 12f586d7dffe3cc40b89b20bc966f96e, type: 3}
       propertyPath: m_AnchorMax.y
