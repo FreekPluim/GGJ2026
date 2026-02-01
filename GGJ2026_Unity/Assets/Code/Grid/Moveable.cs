@@ -5,9 +5,22 @@ public class Moveable : Obstacle
 {
     public UnityEvent<Vector3Int, GameObject> ChangedPosition;
 
+    public SpriteRenderer spriteRenderer;
+    public Sprite onButton, offButton;
+
     public override void Start()
     {
         base.Start();
+    }
+
+    public void SetSpriteOn()
+    {
+        spriteRenderer.sprite = onButton;
+    }
+
+    public void SetSpriteOff()
+    {
+        spriteRenderer.sprite = offButton;
     }
 
     public override bool TryMove(Vector3Int direction)
@@ -26,6 +39,7 @@ public class Moveable : Obstacle
         {
             if (MapManager.Instance.GetObstacleType(gridPosition + direction) == ObstacleType.Hole)
             {
+
                 gridPosition += direction;
                 transform.position = gridPosition;
                 MapManager.Instance.SetTileToWalkableObstacle(gridPosition);

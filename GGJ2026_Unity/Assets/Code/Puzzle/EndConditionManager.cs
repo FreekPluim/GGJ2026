@@ -29,7 +29,9 @@ public class EndConditionManager : MonoBehaviour
             MapManager.Instance.CloseExit();
             return false;
         }
+
         MapManager.Instance.OpenExit();
+        if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnOpenDoor");
         return true;
     }
 }

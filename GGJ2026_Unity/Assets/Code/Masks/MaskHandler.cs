@@ -86,6 +86,8 @@ public class MaskHandler : MonoBehaviour
     public void PickupMask(Mask mask, out Mask droppedMask)
     {
         droppedMask = null;
+        if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnPickup");
+
         if (inventoryMask == null)
         {
             inventoryMask = mask;
@@ -98,6 +100,7 @@ public class MaskHandler : MonoBehaviour
 
         activeMask = mask;
         activeMask.StartUse();
+
 
         OnMasksChanged?.Invoke(new SwapMaskData
         {

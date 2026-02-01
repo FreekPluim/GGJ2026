@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour
                 currentTile += direction;
                 transform.position = currentTile;
                 OnPositionChanged?.Invoke(currentTile, gameObject);
+                if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnWalk");
                 return;
             }
             if (maskHandler.GetActiveMask().Type != Mask.MaskType.Strength) return;
@@ -111,6 +112,7 @@ public class PlayerController : MonoBehaviour
                 currentTile += direction;
                 transform.position = currentTile;
                 OnPositionChanged?.Invoke(currentTile, gameObject);
+                if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnWalk");
                 return;
             }
         }
@@ -119,6 +121,7 @@ public class PlayerController : MonoBehaviour
             currentTile += direction;
             transform.position = currentTile;
             OnPositionChanged?.Invoke(currentTile, gameObject);
+            if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnWalk");
             return;
         }
     }
@@ -139,6 +142,7 @@ public class PlayerController : MonoBehaviour
             currentTile += (facingVector * 2);
             transform.position = currentTile;
             OnPositionChanged?.Invoke(currentTile, gameObject);
+            if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnDash");
             return;
         }
     }

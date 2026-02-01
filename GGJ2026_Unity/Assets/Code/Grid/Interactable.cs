@@ -23,6 +23,11 @@ public class Interactable : Obstacle
         if (objectPosition == gridPosition)
         {
             objectOnTop = obj;
+            if (obj.TryGetComponent(out Moveable moveable))
+            {
+                moveable.SetSpriteOn();
+            }
+            if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnButtonClicked");
             onActivate.Invoke();
         }
         else
@@ -30,6 +35,10 @@ public class Interactable : Obstacle
             if (objectOnTop != obj) return;
             else
             {
+                if (obj.TryGetComponent(out Moveable moveable))
+                {
+                    moveable.SetSpriteOff();
+                }
                 objectOnTop = null;
                 onDeactivate.Invoke();
             }
