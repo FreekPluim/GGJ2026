@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleRooms/DashPuzzle_03.unity
     guid: 2939048db1b29ae4cb947642e746462f
+  - enabled: 1
+    path: Assets/Scenes/CreditsRoom.unity
+    guid: af9834ea442efe8409c6d921ba9fc3f4
   - enabled: 0
     path: Assets/Scenes/Test/Grid system.unity
     guid: ff6c59f55d0af2847b90f68834148f9e
