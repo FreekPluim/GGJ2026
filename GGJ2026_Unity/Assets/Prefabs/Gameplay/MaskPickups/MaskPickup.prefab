@@ -30,8 +30,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1862298393463672892}
   - {fileID: 2018217198119580650}
+  - {fileID: 1862298393463672892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7297478898250087096
@@ -110,13 +110,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shiny_particle
       objectReference: {fileID: 0}
+    - target: {fileID: 5727765570903075072, guid: 436c919bb02a6ea4d8af269062fa3da9, type: 3}
+      propertyPath: m_SortMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5727765570903075072, guid: 436c919bb02a6ea4d8af269062fa3da9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6349709790544539440, guid: 436c919bb02a6ea4d8af269062fa3da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6349709790544539440, guid: 436c919bb02a6ea4d8af269062fa3da9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6349709790544539440, guid: 436c919bb02a6ea4d8af269062fa3da9, type: 3}
       propertyPath: m_LocalPosition.z
