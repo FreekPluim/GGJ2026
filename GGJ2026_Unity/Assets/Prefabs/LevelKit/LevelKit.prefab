@@ -1934,6 +1934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1788713322780969254}
     m_Modifications:
+    - target: {fileID: 843086352245187992, guid: 5c427b16535ec24469259c9035198adc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3242964106477653884, guid: 5c427b16535ec24469259c9035198adc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
