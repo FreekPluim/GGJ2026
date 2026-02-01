@@ -86,7 +86,7 @@ public class MaskHandler : MonoBehaviour
     public void PickupMask(Mask mask, out Mask droppedMask)
     {
         droppedMask = null;
-        if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnPickup");
+        if (AudioManager.instance != null) AudioManager.instance.Play("OnPickup");
 
         if (inventoryMask == null)
         {

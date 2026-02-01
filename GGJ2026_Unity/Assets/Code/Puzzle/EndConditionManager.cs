@@ -31,7 +31,7 @@ public class EndConditionManager : MonoBehaviour
         }
 
         MapManager.Instance.OpenExit();
-        if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnOpenDoor");
+        if (AudioManager.instance != null) AudioManager.instance.Play("OnOpenDoor");
         return true;
     }
 }

@@ -45,6 +45,8 @@ public class Moveable : Obstacle
                 MapManager.Instance.SetTileToWalkableObstacle(gridPosition);
                 MapManager.Instance.RemoveOccupiedTile(this);
                 ChangedPosition.Invoke(gridPosition, gameObject);
+                if (AudioManager.instance != null) AudioManager.instance.Play("OnBoxDropped");
+
                 return true;
             }
         }

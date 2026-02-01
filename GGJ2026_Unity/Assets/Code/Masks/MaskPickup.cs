@@ -46,7 +46,7 @@ public class MaskPickup : Obstacle
             Destroy(gameObject);
             return;
         }
-        if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnPickup");
+        if (AudioManager.instance != null) AudioManager.instance.Play("OnPickup");
         currentMask = droppedMask;
         GenerateVisuals();
     }

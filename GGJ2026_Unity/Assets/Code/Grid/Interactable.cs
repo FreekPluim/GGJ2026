@@ -27,7 +27,7 @@ public class Interactable : Obstacle
             {
                 moveable.SetSpriteOn();
             }
-            if (AudioManager.instance != null) AudioManager.instance.PlayOneShot("OnButtonClicked");
+            if (AudioManager.instance != null) AudioManager.instance.Play("OnButtonClicked");
             onActivate.Invoke();
         }
         else
