@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class TypewriterEffect : MonoBehaviour
 
     [SerializeField] private string specialDelayChars;
     [SerializeField] private float specialDelay;
+
+    [Space]
+    [SerializeField] private UnityEvent onEffectEnded;
 
     private string initialString;
     private bool skipReq;
@@ -57,5 +61,6 @@ public class TypewriterEffect : MonoBehaviour
         }
 
         label.text = initialString;
+        onEffectEnded?.Invoke();
     }
 }
