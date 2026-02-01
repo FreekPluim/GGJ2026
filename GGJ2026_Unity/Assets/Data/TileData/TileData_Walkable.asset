@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e23870b96d36b7c41aa95b6aa0977588, type: 2}
   - {fileID: 11400000, guid: 7d67c0adde1db3c4a86ae983694ca861, type: 2}
   - {fileID: 11400000, guid: d7820c95f75f4cf44aada55473bb4cca, type: 2}
+  - {fileID: 11400000, guid: 61e420f24243da64d93cfc5f5fce16e7, type: 2}
   Walkable: 1
   Obstacle: 1
   Skippable: 0
