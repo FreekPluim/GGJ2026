@@ -18,6 +18,15 @@ EditorBuildSettings:
     path: Assets/Scenes/PuzzleRooms/BoxPuzzle_03.unity
     guid: fed52c9d9b683dd4c9d845545e90aa5f
   - enabled: 1
+    path: Assets/Scenes/PuzzleRooms/DashPuzzle_01.unity
+    guid: 2db6b6cbfb19aaa4c8a1e1be28a9e8cc
+  - enabled: 1
+    path: Assets/Scenes/PuzzleRooms/DashPuzzle_02.unity
+    guid: af3787272532a604bba5c0afc2c8cee8
+  - enabled: 1
+    path: Assets/Scenes/PuzzleRooms/DashPuzzle_03.unity
+    guid: 2939048db1b29ae4cb947642e746462f
+  - enabled: 1
     path: Assets/Scenes/Test/Grid system.unity
     guid: ff6c59f55d0af2847b90f68834148f9e
   - enabled: 1
