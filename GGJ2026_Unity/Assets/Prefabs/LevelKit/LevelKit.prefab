@@ -755,8 +755,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e79b4969a139cf46a6691a2846d3118, type: 2}
   - {fileID: 11400000, guid: be9d4bd82987b9b4285c23994c779a7d, type: 2}
   walkableObstacle: {fileID: 11400000, guid: 7d67c0adde1db3c4a86ae983694ca861, type: 2}
-  endOpenTile: {fileID: 11400000, guid: 4afe5190232284649865116dd24f19f0, type: 2}
-  endClosedTile: {fileID: 11400000, guid: 2ca2c2f78e159b14daf3e528673dd682, type: 2}
+  endOpenTile: {fileID: 11400000, guid: d7820c95f75f4cf44aada55473bb4cca, type: 2}
+  endClosedTile: {fileID: 11400000, guid: 3720693458e45604b8125aa460e87b53, type: 2}
   end: {fileID: 210647702470420677}
 --- !u!1 &9156061368066154874
 GameObject:
