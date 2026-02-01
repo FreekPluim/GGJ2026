@@ -18,5 +18,5 @@ MonoBehaviour:
   Left: 97
   Right: 100
   useMask: 32
-  pickup: 101
+  pickup: 102
   restartLevel: 114
