@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741488f3ce9813a40b4bf54f5e755eae, type: 3}
   m_Name: DashMask
   m_EditorClassIdentifier: 
-  title: Dash Mask
+  title: Dash
   uiVisualPrefab: {fileID: 3535522013036704660, guid: 7e362e95e6173604a8cf8c5c12f39eb7, type: 3}
   pickupVisualPrefab: {fileID: 4415950572391893675, guid: bfd5fc81a621eb2498f2e34396cf7525, type: 3}
-  description: Makes you go zoomies!! yayy
+  description: 'My step feels springy...
+
+    I think I can jump further now.'

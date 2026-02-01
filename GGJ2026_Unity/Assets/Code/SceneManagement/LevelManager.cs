@@ -3,7 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public KeybindsSO keybinds;
+    public static LevelManager Instance;
+
+    [SerializeField] private KeybindsSO keybinds;
+
+    [Space]
+    public string levelTitle;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {

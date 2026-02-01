@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cb95df811723e48b1882b1c3d034af, type: 3}
   m_Name: StrengthMask
   m_EditorClassIdentifier: 
-  title: Strength Mask
+  title: Strength
   uiVisualPrefab: {fileID: 3246321993931791847, guid: 07724b25a34a7fd4a997d91bee227e6f, type: 3}
   pickupVisualPrefab: {fileID: 7151281386846147727, guid: 7014b52076416244eae967062d54e803, type: 3}
-  description: ME STRONG ME PUSH YES
+  description: 'A spirit lingers in this mask.
+
+    I can feel it''s strength.'

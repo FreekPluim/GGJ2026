@@ -36,7 +36,7 @@ public class MaskContainer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Mask newMaskData = listenerType == MaskListenerType.Active ? data.newActiveMask : data.newInventoryMask;
         if (newMaskData == null)
         {
-            maskLabel.text = "Empty";
+            maskLabel.text = "-Empty-";
 
             if (maskVisualHolder.transform.childCount > 0)
             {
