@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 80557371}
-  fadeDelay: 1.2
-  fadeTime: 1
+  fadeDelay: 1.6
+  fadeTime: 1.5
   OnFadeEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 199101771}
   - component: {fileID: 199101773}
   - component: {fileID: 199101772}
+  - component: {fileID: 199101774}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -295,6 +296,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199101770}
   m_CullTransparentMesh: 1
+--- !u!114 &199101774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199101770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd195a1fa627f649a4627c79ecf2aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOffset: 10
+  bobSpeed: 1
+  timeOffset: 0.7
 --- !u!1 &283060310
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +322,7 @@ GameObject:
   - component: {fileID: 283060311}
   - component: {fileID: 283060313}
   - component: {fileID: 283060312}
+  - component: {fileID: 283060314}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -370,6 +387,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283060310}
   m_CullTransparentMesh: 1
+--- !u!114 &283060314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283060310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd195a1fa627f649a4627c79ecf2aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOffset: 10
+  bobSpeed: 1
+  timeOffset: 0
 --- !u!1 &430624645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   label: {fileID: 947775280}
   beginOnStart: 0
-  startDelay: 2.4
+  startDelay: 2.6
   typeDelay: 0.1
   specialDelayChars: .,!?
   specialDelay: 0.3
@@ -3672,8 +3704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 1117368513}
-  fadeDelay: 0.6
-  fadeTime: 1
+  fadeDelay: 0.8
+  fadeTime: 1.5
   OnFadeEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -4829,7 +4861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   group: {fileID: 1792055581}
   fadeDelay: 0
-  fadeTime: 1
+  fadeTime: 1.5
   OnFadeEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -4993,6 +5025,7 @@ GameObject:
   - component: {fileID: 2136394509}
   - component: {fileID: 2136394511}
   - component: {fileID: 2136394510}
+  - component: {fileID: 2136394512}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -5057,6 +5090,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136394508}
   m_CullTransparentMesh: 1
+--- !u!114 &2136394512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136394508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd195a1fa627f649a4627c79ecf2aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxOffset: 10
+  bobSpeed: 1
+  timeOffset: 1.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
