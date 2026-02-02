@@ -108,11 +108,23 @@ MonoBehaviour:
         setBaseValues: 1
     - key: OnWalk
       value:
+        clip: {fileID: 8300000, guid: fec1d154894c2b24d882ecbc20105a7f, type: 3}
+        output: {fileID: 0}
+        priority: 128
+        volume: 0.1
+        pitch: 0.8
+        bypassEffects: 0
+        bypassListenerEffects: 0
+        bypassReverbZones: 0
+        source: {fileID: 0}
+        setBaseValues: 1
+    - key: OnWalkIntoWall
+      value:
         clip: {fileID: 8300000, guid: 92089995d3722314dbad38c5cefa67a0, type: 3}
         output: {fileID: 0}
         priority: 128
-        volume: 0.3
-        pitch: 1
+        volume: 0.5
+        pitch: 0.1
         bypassEffects: 0
         bypassListenerEffects: 0
         bypassReverbZones: 0

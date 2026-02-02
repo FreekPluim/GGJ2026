@@ -100,7 +100,18 @@ public class MapManager : MonoBehaviour
     }
     public TileDataSO GetTileDataFromCell(Vector3Int cell)
     {
-        return dataFromTiles[tilemaps[0].GetTile(cell)];
+        TileDataSO tileData = null;
+
+        if (tilemaps[0].GetTile(cell) != null && dataFromTiles.ContainsKey(tilemaps[0].GetTile(cell)))
+        {
+            tileData = dataFromTiles[tilemaps[0].GetTile(cell)];
+        }
+        else if (tilemaps[1].GetTile(cell) != null && dataFromTiles.ContainsKey(tilemaps[1].GetTile(cell)))
+        {
+            tileData = dataFromTiles[tilemaps[1].GetTile(cell)];
+        }
+
+        return tileData;
     }
     public void SetTileToWalkableObstacle(Vector3Int cell)
     {

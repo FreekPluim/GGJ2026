@@ -94,7 +94,11 @@ public class PlayerController : MonoBehaviour
 
     private void TryMove(Vector3Int direction)
     {
-        if (!MapManager.Instance.CheckIsWalkable(currentTile + direction)) { return; }
+        if (!MapManager.Instance.CheckIsWalkable(currentTile + direction))
+        {
+            if (AudioManager.instance != null) AudioManager.instance.Play("OnWalkIntoWall");
+            return;
+        }
         if (MapManager.Instance.GetOccupiedTile(currentTile + direction) != null)
         {
             if (MapManager.Instance.GetOccupiedTile(currentTile + direction).walkable)
@@ -105,7 +109,16 @@ public class PlayerController : MonoBehaviour
                 if (AudioManager.instance != null) AudioManager.instance.Play("OnWalk");
                 return;
             }
-            if (maskHandler.GetActiveMask().Type != Mask.MaskType.Strength) return;
+            else { if (AudioManager.instance != null) AudioManager.instance.Play("OnWalkIntoWall"); }
+
+            //Check for mask
+            if (maskHandler.GetActiveMask().Type != Mask.MaskType.Strength)
+            {
+                if (AudioManager.instance != null) AudioManager.instance.Play("OnWalkIntoWall");
+                return;
+            }
+
+            //Moving box
             if (MapManager.Instance.GetOccupiedTile(currentTile + direction).TryMove(direction))
             {
                 //MoveSelf
@@ -115,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 if (AudioManager.instance != null) AudioManager.instance.Play("OnWalk");
                 return;
             }
+            else { if (AudioManager.instance != null) AudioManager.instance.Play("OnWalkIntoWall"); }
         }
         else
         {
